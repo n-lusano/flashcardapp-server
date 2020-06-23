@@ -150,7 +150,14 @@ app.post("/authorized_post_request", authMiddleWare, (req, res) => {
   });
 });
 
+const collectionRouter = require("./routers/collections");
+const cardRouter = require("./routers/cards");
+const userRouter = require("./routers/users");
+
 app.use("/", authRouter);
+app.use("/collections", collectionRouter);
+app.use("/cards", cardRouter);
+// app.use("/users", userRouter);
 
 // Listen for connections on specified port (default is port 4000)
 
