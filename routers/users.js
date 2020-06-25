@@ -2,6 +2,7 @@ const { Router } = require("express");
 const User = require("../models").user;
 const Collection = require("../models").collection;
 const Card = require("../models").card;
+const authMiddleware = require("../auth/middleware");
 
 const router = new Router();
 
@@ -14,15 +15,18 @@ const router = new Router();
 //   }
 // });
 
-router.get("/:id", async (req, res, next) => {
+router.get("/", authMiddleware, async (req, res, next) => {
   try {
-    const { id } = req.params;
-
-    if (isNaN(parseInt(id))) {
-      return res.status(400).send();
-    }
-
-    const user = await User.findByPk(id, { include: [Card] });
+    const id = req.user.dataValues["id"];
+    console.log("ID", id);
+    const user = await User.findByPk(id, {
+      include: [
+        {
+          model: Collection,
+          include: [Card],
+        },
+      ],
+    });
 
     if (user === null) {
       return res.status(404).send();
