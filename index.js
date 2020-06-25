@@ -157,10 +157,9 @@ const userRouter = require("./routers/users");
 app.use("/", authRouter);
 app.use("/collections", collectionRouter);
 app.use("/cards", cardRouter);
-// app.use("/users", userRouter);
+app.use("/users", userRouter);
 
 // Listen for connections on specified port (default is port 4000)
-
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });

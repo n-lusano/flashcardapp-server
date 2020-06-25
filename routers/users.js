@@ -14,4 +14,23 @@ const router = new Router();
 //   }
 // });
 
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    if (isNaN(parseInt(id))) {
+      return res.status(400).send();
+    }
+
+    const user = await User.findByPk(id, { include: [Card] });
+
+    if (user === null) {
+      return res.status(404).send();
+    }
+    res.status(200).send(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
