@@ -28,9 +28,7 @@ router.get("/", authMiddleware, async (req, res, next) => {
       ],
     });
 
-    if (user === null) {
-      return res.status(404).send();
-    }
+    delete user.dataValues["password"];
     res.status(200).send(user);
   } catch (error) {
     next(error);
