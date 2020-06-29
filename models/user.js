@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   user.associate = function (models) {
     user.hasMany(models.collection);
     user.hasMany(models.card);
+    user.hasMany(models.session);
   };
   return user;
 };

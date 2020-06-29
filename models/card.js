@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   card.associate = function (models) {
     card.belongsTo(models.user);
     card.belongsTo(models.collection);
+    card.hasMany(models.scoredCard);
   };
   return card;
 };
