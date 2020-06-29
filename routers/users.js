@@ -6,15 +6,6 @@ const authMiddleware = require("../auth/middleware");
 
 const router = new Router();
 
-// router.get("/", async (req, res, next) => {
-//   try {
-//     const users = await User.findAll(); //{ include: [Collection] } ???
-//     res.send(users);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 router.get("/", authMiddleware, async (req, res, next) => {
   try {
     const id = req.user.dataValues["id"];
