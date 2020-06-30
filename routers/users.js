@@ -2,6 +2,7 @@ const { Router } = require("express");
 const User = require("../models").user;
 const Collection = require("../models").collection;
 const Card = require("../models").card;
+const Session = require("../models").session;
 const authMiddleware = require("../auth/middleware");
 
 const router = new Router();
@@ -16,6 +17,7 @@ router.get("/", authMiddleware, async (req, res, next) => {
           model: Collection,
           include: [Card],
         },
+        Session,
       ],
     });
 
