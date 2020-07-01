@@ -8,7 +8,6 @@ const router = new Router();
 router.get("/", authMiddleware, async (req, res, next) => {
   try {
     const userId = req.user.dataValues["id"];
-    console.log("USER ID", userId);
     const sessions = await Session.findAll({
       include: [ScoredCard],
       where: { userId: userId },
@@ -19,5 +18,22 @@ router.get("/", authMiddleware, async (req, res, next) => {
     next(error);
   }
 });
+
+router.post(
+  "/collections/:collectionId",
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      const { collectionId } = req.params;
+      const userId = req.user.dataValues["id"];
+      const finished = false;
+
+      const session = await Session.create({ userId, collectionId, finished });
+      res.send(session);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = router;
