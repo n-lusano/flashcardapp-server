@@ -5,7 +5,7 @@ const router = new Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const cards = await Card.findAll();
+    const cards = await Card.findAll({ order: [["id", "ASC"]] });
     res.send(cards);
   } catch (error) {
     next(error);

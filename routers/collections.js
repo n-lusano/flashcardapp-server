@@ -22,7 +22,10 @@ router.get("/:id", async (req, res, next) => {
       return res.status(400).send();
     }
 
-    const collection = await Collection.findByPk(id, { include: [Card] });
+    const collection = await Collection.findByPk(id, {
+      include: [Card],
+      order: [["id", "ASC"]],
+    });
 
     if (collection === null) {
       return res.status(404).send();
