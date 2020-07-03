@@ -2,7 +2,6 @@ const { Router } = require("express");
 const Session = require("../models").session;
 const ScoredCard = require("../models").scoredCard;
 const authMiddleware = require("../auth/middleware");
-const { sequelize } = require("sequelize");
 
 const router = new Router();
 
@@ -32,6 +31,29 @@ router.post(
 
       const session = await Session.create({ userId, collectionId, finished });
       res.send(session);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.patch(
+  "/collections/:collectionId",
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      const { collectionId } = req.params;
+      const userId = req.user.dataValues["id"];
+      const { finished } = req.body;
+
+      const session = await Session.findOne({
+        where: { userId: userId },
+        order: [["id", "DESC"]],
+      });
+
+      await session.update({ finished });
+
+      res.status(200).send(session);
     } catch (error) {
       next(error);
     }
