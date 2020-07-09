@@ -7,7 +7,10 @@ const router = new Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const collections = await Collection.findAll({ include: [Card] });
+    const collections = await Collection.findAll({
+      include: [Card],
+      order: [["id", "ASC"]],
+    });
     res.send(collections);
   } catch (error) {
     next(error);

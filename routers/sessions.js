@@ -30,6 +30,7 @@ router.post(
       const finished = false;
 
       const session = await Session.create({ userId, collectionId, finished });
+
       res.send(session);
     } catch (error) {
       next(error);
