@@ -26,24 +26,19 @@ router.patch(
       const { scoredCorrect } = req.body;
       const userId = req.user.dataValues["id"];
 
-      // console.log("collection ID", collectionId);
-      // console.log("scoredcorrect ", scoredCorrect);
-      // console.log("user id", userId);
       // Get the User's latest Session for this Collection
       const session = await Session.findOne({
         // include: [ScoredCard],
         where: { userId: userId, collectionId: collectionId },
         order: [["id", "DESC"]],
       });
-      // console.log("what is session", session);
+
       const scoredCard = await ScoredCard.create({
         cardId: cardId,
         sessionId: session.id,
-        scoredCorrect,
+        scoredCorrect: scoredCorrect,
         // order: [["id", "DESC"]],
       });
-
-      await scoredCard.update({ scoredCorrect: scoredCorrect });
 
       res.status(200).send(scoredCard);
     } catch (error) {
