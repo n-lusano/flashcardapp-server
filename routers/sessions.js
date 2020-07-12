@@ -61,4 +61,27 @@ router.patch(
   }
 );
 
+router.get("/stats/:collectionId", authMiddleware, async (req, res, next) => {
+  try {
+    const userId = req.user.dataValues["id"];
+    const { collectionId } = req.params;
+    const sessions = await Session.findAll({
+      include: [ScoredCard],
+      where: {
+        userId: userId,
+        collectionId: collectionId,
+      },
+      order: [["id", "ASC"]],
+    });
+
+    const nonEmptySessions = sessions.filter(
+      (session) => session.scoredCards.length !== 0
+    );
+
+    res.status(200).send(nonEmptySessions);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
