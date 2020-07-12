@@ -73,4 +73,27 @@ router.delete("/:id", authMiddleware, async (req, res, next) => {
   }
 });
 
+router.patch("/:id", authMiddleware, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { name } = req.body;
+
+    if (isNaN(parseInt(id))) {
+      return res.status(400).send();
+    }
+
+    const collection = await Collection.findByPk(id);
+
+    if (collection === null) {
+      return res.status(404).send();
+    }
+
+    await collection.update({ name });
+
+    res.status(200).send(collection);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

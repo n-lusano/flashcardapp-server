@@ -52,4 +52,27 @@ router.delete("/:id", authMiddleware, async (req, res, next) => {
   }
 });
 
+router.patch("/:id", authMiddleware, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { wordEn, wordNl, wordIt } = req.body;
+
+    if (isNaN(parseInt(id))) {
+      return res.status(400).send();
+    }
+
+    const card = await Card.findByPk(id);
+
+    if (card === null) {
+      return res.status(404).send();
+    }
+
+    await card.update({ wordEn, wordNl, wordIt });
+
+    res.status(200).send(card);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
