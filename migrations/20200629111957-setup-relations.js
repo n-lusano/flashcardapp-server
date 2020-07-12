@@ -31,7 +31,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
 
     await queryInterface.addColumn("sessions", "collectionId", {
@@ -42,7 +42,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("sessions", "userId", {
       type: Sequelize.INTEGER,
@@ -63,7 +63,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
     await queryInterface.addColumn("scoredCards", "cardId", {
       type: Sequelize.INTEGER,
@@ -73,7 +73,7 @@ module.exports = {
         key: "id",
       },
       onUpdate: "CASCADE",
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     });
   },
 
