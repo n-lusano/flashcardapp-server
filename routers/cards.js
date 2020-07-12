@@ -44,8 +44,9 @@ router.delete("/:id", authMiddleware, async (req, res, next) => {
     if (card === null) {
       return res.status(404).send();
     }
-    card.destroy();
-    res.status(200).send();
+    await card.destroy();
+
+    res.status(200).send(card);
   } catch (error) {
     next(error);
   }
