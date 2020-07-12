@@ -43,24 +43,27 @@ The repository for the [frontend](https://github.com/n-lusano/flashcardapp-clien
 
 ### Endpoints
 
-| Method | Path                                             | Purpose                                              | required parameters                 | auth |
-| ------ | ------------------------------------------------ | ---------------------------------------------------- | ----------------------------------- | ---- |
-| GET    | '/'                                              | Test if your server is running                       | none                                | no   |
-| POST   | '/echo'                                          | Test POST requests                                   | none                                | no   |
-| POST   | '/signup'                                        | Create a new user and get a token                    | email, name, password               | no   |
-| POST   | '/login'                                         | Get a token with email & password                    | email, password                     | no   |
-| GET    | '/me'                                            | Get information of this user                         | none                                | yes  |
-| POST   | '/authorized_post_request'                       | Test POST requests (token required)                  | none                                | yes  |
-| GET    | '/user'                                          | Get logged user collections, cards, sessions, scores | none                                | yes  |
-| GET    | '/collections'                                   | Get collections and relative cards                   | none                                | no   |
-| GET    | '/collections/:id'                               | Get single collection and relative cards             | id                                  | no   |
-| POST   | '/collections'                                   | Create a new collection                              | name                                | yes  |
-| DELETE | '/collections/:id'                               | Delete a collection                                  | id                                  | yes  |
-| GET    | '/cards'                                         | Get cards                                            | none                                | no   |
-| POST   | '/cards'                                         | Create a new card                                    | wordEn, wordNl, collectionId        | yes  |
-| DELETE | '/cards/:id'                                     | Delete a card                                        | id                                  | yes  |
-| GET    | '/sessions'                                      | Get logged user's sessions                           | none                                | yes  |
-| POST   | '/sessions/collections/:collectionId'            | Start a logged user's new session                    | collectionId                        | yes  |
-| PATCH  | '/sessions/collections/:collectionId'            | End a logged user's session                          | collectionId, finished              | yes  |
-| GET    | '/scoredcards'                                   | Get all scored cards                                 | none                                | yes  |
-| PATCH  | '/scoredcards/collections/:collectionId/:cardId' | Update logged user's score on single card            | collectionId, cardId, scoredCorrect | yes  |
+| Method | Path                                             | Purpose                                                  | required parameters                 | auth |
+| ------ | ------------------------------------------------ | -------------------------------------------------------- | ----------------------------------- | ---- |
+| GET    | '/'                                              | Test if your server is running                           | none                                | no   |
+| POST   | '/echo'                                          | Test POST requests                                       | none                                | no   |
+| POST   | '/signup'                                        | Create a new user and get a token                        | email, name, password               | no   |
+| POST   | '/login'                                         | Get a token with email & password                        | email, password                     | no   |
+| GET    | '/me'                                            | Get information of this user                             | none                                | yes  |
+| POST   | '/authorized_post_request'                       | Test POST requests (token required)                      | none                                | yes  |
+| GET    | '/user'                                          | Get logged user collections, cards, sessions, scores     | none                                | yes  |
+| GET    | '/collections'                                   | Get collections and relative cards                       | none                                | no   |
+| GET    | '/collections/:id'                               | Get single collection and relative cards                 | id                                  | no   |
+| POST   | '/collections'                                   | Create a new collection                                  | name                                | yes  |
+| PATCH  | '/collections/:id'                               | Edit a collection                                        | id, name                            | yes  |
+| DELETE | '/collections/:id'                               | Delete a collection                                      | id                                  | yes  |
+| GET    | '/cards'                                         | Get cards                                                | none                                | no   |
+| POST   | '/cards'                                         | Create a new card                                        | wordEn, wordNl, collectionId        | yes  |
+| PATCH  | '/cards/:id'                                     | Edit a card                                              | id, wordEn, wordNl                  | yes  |
+| DELETE | '/cards/:id'                                     | Delete a card                                            | id                                  | yes  |
+| GET    | '/sessions'                                      | Get logged user's sessions                               | none                                | yes  |
+| POST   | '/sessions/collections/:collectionId'            | Start a logged user's new session                        | collectionId                        | yes  |
+| PATCH  | '/sessions/collections/:collectionId'            | End a logged user's session                              | collectionId, finished              | yes  |
+| GET    | '/sessions/stats/:collectionId'                  | Get logged user's sessions filtered by active collection | collectionId                        | yes  |
+| GET    | '/scoredcards'                                   | Get all scored cards                                     | none                                | yes  |
+| PATCH  | '/scoredcards/collections/:collectionId/:cardId' | Update logged user's score on single card                | collectionId, cardId, scoredCorrect | yes  |
