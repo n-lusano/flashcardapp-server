@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
       include: [Card],
       order: [["id", "ASC"]],
     });
-    res.send(collections);
+    res.status(200).send(collections);
   } catch (error) {
     next(error);
   }
@@ -46,6 +46,28 @@ router.post("/", authMiddleware, async (req, res, next) => {
 
     const collection = await Collection.create({ userId, name });
     res.send(collection);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id", authMiddleware, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    if (isNaN(parseInt(id))) {
+      return res.status(400).send();
+    }
+
+    const collection = await Collection.findByPk(id);
+
+    if (collection === null) {
+      return res.status(404).send();
+    }
+
+    await collection.destroy();
+
+    res.status(200).send(collection);
   } catch (error) {
     next(error);
   }
