@@ -4,7 +4,7 @@
   "description": "Simple express server with sequelize, pg and jwts",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "node . && npm run dev && echo 'Creating Tables'; npx sequelize-cli db:create; echo 'Running Migrating'; npx sequelize-cli db:migrate; echo 'Seed tables'; npx sequelize-cli db:seed:all",
     "dev": "env DELAY=1000 npx nodemon .",
     "initdev": "npm run migrate && npm run seed",
     "migrate": "npx sequelize-cli db:migrate",
