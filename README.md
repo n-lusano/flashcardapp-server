@@ -5,7 +5,6 @@ Backend REST API for FlashcardApp app using Express.js and Postgres. Object-rela
 ## Table of contents
 
 - [About](#about)
-- [Demo](#demo)
 - [Goals](#goals)
 - [Technologies](#technologies)
 - [Data model](#data-model)
@@ -16,11 +15,7 @@ Backend REST API for FlashcardApp app using Express.js and Postgres. Object-rela
 
 This is the server repository for the FlashcardApp portfolio project: FlashcardApp is an app to provide language learners with an essential learning tool. For more details please refer to the [README](https://github.com/n-lusano/flashcardapp-client/blob/master/README.md) in the client repository.
 
-_This project is work in progress. Some features still need to be implemented or revised. Any suggestions or feedback is welcome, please let me know!_
-
-### Demo
-
-A [gif demo](https://github.com/n-lusano/flashcardapp-client/blob/master/FLASHCARDAPP_GIF.gif)
+_This project is work in progress. Some features still need to be implemented or revised. Any suggestions or feedback is welcome! Feel free to contact me at n.lusano@gmail.com_ :v:
 
 ### Goals
 
