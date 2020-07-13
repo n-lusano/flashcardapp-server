@@ -1,21 +1,26 @@
-# FlashcardApp server
+# :nerd_face: FlashcardApp server :book:
 
 Backend REST API for FlashcardApp app using Express.js and Postgres. Object-relational mapping is done using Sequelize.
 
 ## Table of contents
 
 - [About](#about)
+- [Demo](#demo)
 - [Goals](#goals)
-- [Technologies](#technologies) <!-- - [Demo](#demo) -->
+- [Technologies](#technologies)
 - [Data model](#data-model)
 - [Client Repository](#client-repository)
 - [Endpoints](#endpoints)
 
 ### About
 
-This is the server repository for the FlashcardApp portfolio project: FlashcardApp is an app to provide language learners with an essential learning tool. For more details please refer to the [README](https://github.com/n-lusano/flashcardapp-client/blob/development/README.md) in the client repository.
+This is the server repository for the FlashcardApp portfolio project: FlashcardApp is an app to provide language learners with an essential learning tool. For more details please refer to the [README](https://github.com/n-lusano/flashcardapp-client/blob/master/README.md) in the client repository.
 
-<!-- NB THE UPDATED LINKS WITH CORRECT MASTER BRANCH! -->
+_This project is work in progress. Some features still need to be implemented or revised. Any suggestions or feedback is welcome, please let me know!_
+
+### Demo
+
+A [gif demo](https://github.com/n-lusano/flashcardapp-client/blob/master/FLASHCARDAPP_GIF.gif)
 
 ### Goals
 
@@ -31,15 +36,11 @@ My goal for this project was to build a full stack app using the technologies le
 
 ### Data model
 
-![Data model](https://github.com/n-lusano/flashcardapp-server/blob/development/DATABASE_MODEL.png?raw=true)
-
-<!-- NB CHECK LINKS LATER -->
+![Data model](https://github.com/n-lusano/flashcardapp-server/blob/master/DATABASE_MODEL.png?raw=true)
 
 ### Client Repository
 
-The repository for the [frontend](https://github.com/n-lusano/flashcardapp-client) and the [user stories](https://github.com/n-lusano/flashcardapp-client/projects/1) and [wireframe](https://github.com/n-lusano/flashcardapp-client/blob/development/WIREFRAME.png) I used to plan my project.
-
-<!-- NB CHECK LINKS LATER -->
+The repository for the [frontend](https://github.com/n-lusano/flashcardapp-client) and the [user stories](https://github.com/n-lusano/flashcardapp-client/projects/1) and [wireframe](https://github.com/n-lusano/flashcardapp-client/blob/master/WIREFRAME.png) I used to plan my project.
 
 ### Endpoints
 

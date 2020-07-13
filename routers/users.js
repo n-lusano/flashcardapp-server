@@ -12,7 +12,6 @@ const router = new Router();
 router.get("/", authMiddleware, async (req, res, next) => {
   try {
     const id = req.user.dataValues["id"];
-    // console.log("ID", id);
     const user = await User.findByPk(id, {
       include: [
         {
