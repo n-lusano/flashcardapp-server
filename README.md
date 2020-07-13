@@ -1,129 +1,70 @@
-# Server template
+# :nerd_face: FlashcardApp server :book:
 
-This is a simple server template to for my students to start projects quickly.
+Backend REST API for FlashcardApp app using Express.js and Postgres. Object-relational mapping is done using Sequelize.
 
-## Table of contents:
+## Table of contents
 
-- **[Setup](#setup-how-to-use-this-template)**
-- **[Endpoints](#endpoints)**
-- **[Sample requests with axios](#sample-requests-with-axios)**
-- **[Sample requests with httpie](#sample-requests-with-httpie)**
-- **[History of this project (pullrequests)](#history-of-this-project)**
+- [About](#about)
+- [Demo](#demo)
+- [Goals](#goals)
+- [Technologies](#technologies)
+- [Data model](#data-model)
+- [Client Repository](#client-repository)
+- [Endpoints](#endpoints)
 
-## SETUP How to use this template
+### About
 
-1. Create a new project based on this template using the `Use this template` button
+This is the server repository for the FlashcardApp portfolio project: FlashcardApp is an app to provide language learners with an essential learning tool. For more details please refer to the [README](https://github.com/n-lusano/flashcardapp-client/blob/master/README.md) in the client repository.
 
-![HOW_TO_USE](https://user-images.githubusercontent.com/20372832/77003323-70966180-695d-11ea-8abe-b362d57135f3.gif)
+_This project is work in progress. Some features still need to be implemented or revised. Any suggestions or feedback is welcome, please let me know!_
 
-2. Clone the app
+### Demo
 
-```
-git clone git@github.com:YOUR_GITHUB_NAME/YOUR_PROJECT_NAME.git
-```
+A [gif demo](https://github.com/n-lusano/flashcardapp-client/blob/master/FLASHCARDAPP_GIF.gif)
 
-3. cd into your project
+### Goals
 
-```
-cd YOUR_PROJECT_NAME
-```
+My goal for this project was to build a full stack app using the technologies learned in the bootcamp, together with what motivates me in my daily life as a language enthusiast and an expat who has been actively exercising multiple foreign languages for several years. Being a language learner myself personally motivated me in devising my own app in which collecting and rearranging all the features I was more intrigued by as a user, leaving others behind for a personally more fulfilling experience.
 
-4. install dependencies
+### Technologies
 
-```
-npm install
-```
+- Node.js
+- Express
+- REST
+- Sequelize
+- Postgres
 
-5. Configure your database in `config/config.json`
+### Data model
 
-The default assumes a postgres database with
+![Data model](https://github.com/n-lusano/flashcardapp-server/blob/master/DATABASE_MODEL.png?raw=true)
 
-- username: postgres
-- password: secret
+### Client Repository
 
-```json
-// config/config.json
-{
-  "development": {
-    "username": "postgres",
-    "password": "secret",
-    "database": "YOUR_PROJECT_NAME_HERE_development",
-    "host": "localhost",
-    "dialect": "postgres",
-    "operatorsAliases": "0"
-  }
-}
-```
+The repository for the [frontend](https://github.com/n-lusano/flashcardapp-client) and the [user stories](https://github.com/n-lusano/flashcardapp-client/projects/1) and [wireframe](https://github.com/n-lusano/flashcardapp-client/blob/master/WIREFRAME.png) I used to plan my project.
 
-6. Create database, run migrations & seed data
+### Endpoints
 
-`package.json` contains a script for this
-
-```bash
-npm run initdev
-```
-
-Or run the commands seperately
-
-```bash
-npx sequelize-cli db:create
-npx sequelize-cli db:migrate
-npx sequelize-cli db:seed:all
-```
-
-7. start server with `nodemon` (recommended for development)
-
-```
-npm run dev
-```
-
-8. or start normally
-
-```
-npm start
-```
-
-## Endpoints
-
-| Method | Path                       | Purpose                             | required parameters   | auth |
-| ------ | -------------------------- | ----------------------------------- | --------------------- | ---- |
-| GET    | '/'                        | Test if your server is running      | none                  | no   |
-| POST   | '/echo'                    | Test POST requests                  | none                  | no   |
-| POST   | '/signup'                  | Create a new user and get a token   | email, name, password | no   |
-| POST   | '/login'                   | Get a token with email & password   | email, password       | no   |
-| GET    | '/me'                      | Get information of this user        | none                  | yes  |
-| POST   | '/authorized_post_request' | Test POST requests (token required) | none                  | yes  |
-
-## Sample requests with axios
-
-To demo making request to this server, some small script are included that make requests using `axios`
-
-The scripts can be found in [/sampleRequests](./sampleRequests)
-
-1. Make sure to follow the the setup in this readme first
-2. cd sampleRequests
-3. Run example requests
-
-```
-node hello.js
-node echo.js
-node signup.js
-node login.js
-node me.js
-node authorizedPost.js
-```
-
-## Sample requests with httpie
-
-To demo making request to this server, bash commands are included that make requests using `httpie`
-
-They can found in [./sampleRequests/httpie.md](./sampleRequests/httpie.md)
-
-## History of this project
-
-- [Setup of the server](https://github.com/Codaisseur/express-template/commit/cd2f790fbab6c561300163466a074fd09a35f704)
-- [Adding a README](https://github.com/Codaisseur/express-template/pull/1)
-- [Setting up the Database](https://github.com/Codaisseur/express-template/pull/2)
-- [Signup, Login & auth middleware](https://github.com/Codaisseur/express-template/pull/3)
-- [Configure cors](https://github.com/Codaisseur/express-template/pull/4)
-- [Seed using models & add delay middleware](https://github.com/Codaisseur/express-template/pull/5)
+| Method | Path                                             | Purpose                                                  | required parameters                 | auth |
+| ------ | ------------------------------------------------ | -------------------------------------------------------- | ----------------------------------- | ---- |
+| GET    | '/'                                              | Test if your server is running                           | none                                | no   |
+| POST   | '/echo'                                          | Test POST requests                                       | none                                | no   |
+| POST   | '/signup'                                        | Create a new user and get a token                        | email, name, password               | no   |
+| POST   | '/login'                                         | Get a token with email & password                        | email, password                     | no   |
+| GET    | '/me'                                            | Get information of this user                             | none                                | yes  |
+| POST   | '/authorized_post_request'                       | Test POST requests (token required)                      | none                                | yes  |
+| GET    | '/user'                                          | Get logged user collections, cards, sessions, scores     | none                                | yes  |
+| GET    | '/collections'                                   | Get collections and relative cards                       | none                                | no   |
+| GET    | '/collections/:id'                               | Get single collection and relative cards                 | id                                  | no   |
+| POST   | '/collections'                                   | Create a new collection                                  | name                                | yes  |
+| PATCH  | '/collections/:id'                               | Edit a collection                                        | id, name                            | yes  |
+| DELETE | '/collections/:id'                               | Delete a collection                                      | id                                  | yes  |
+| GET    | '/cards'                                         | Get cards                                                | none                                | no   |
+| POST   | '/cards'                                         | Create a new card                                        | wordEn, wordNl, collectionId        | yes  |
+| PATCH  | '/cards/:id'                                     | Edit a card                                              | id, wordEn, wordNl                  | yes  |
+| DELETE | '/cards/:id'                                     | Delete a card                                            | id                                  | yes  |
+| GET    | '/sessions'                                      | Get logged user's sessions                               | none                                | yes  |
+| POST   | '/sessions/collections/:collectionId'            | Start a logged user's new session                        | collectionId                        | yes  |
+| PATCH  | '/sessions/collections/:collectionId'            | End a logged user's session                              | collectionId, finished              | yes  |
+| GET    | '/sessions/stats/:collectionId'                  | Get logged user's sessions filtered by active collection | collectionId                        | yes  |
+| GET    | '/scoredcards'                                   | Get all scored cards                                     | none                                | yes  |
+| PATCH  | '/scoredcards/collections/:collectionId/:cardId' | Update logged user's score on single card                | collectionId, cardId, scoredCorrect | yes  |
