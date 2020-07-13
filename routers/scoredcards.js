@@ -26,7 +26,7 @@ router.patch(
       const { scoredCorrect } = req.body;
       const userId = req.user.dataValues["id"];
 
-      // Get the User's latest Session for this Collection
+      // get the User's latest Session for this Collection
       const session = await Session.findOne({
         // include: [ScoredCard],
         where: { userId: userId, collectionId: collectionId },
