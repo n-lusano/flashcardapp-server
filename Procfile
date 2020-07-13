@@ -1,1 +1,1 @@
-api: npm run start
+release: bash post-release.sh
